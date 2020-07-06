@@ -15,6 +15,10 @@ function [IDstrings,ports]=serialDevID(ports)
 
 % In Linux (ubuntu XX): resolve the symlinks in the pseudodir /dev/serial/by-id 
 
+if ~exist('ports','var')
+    ports=serialportlist('all');
+end
+
 % set up for single or multiple ports
 if isa(ports,'string') && length(ports)>1
     nports=length(ports);
