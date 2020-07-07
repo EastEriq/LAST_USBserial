@@ -16,15 +16,21 @@ function [IDstrings,ports]=serialDevID(ports)
 % In Linux (ubuntu XX): resolve the symlinks in the pseudodir /dev/serial/by-id 
 
 if ~exist('ports','var')
-    ports=serialportlist('all');
+    try
+        ports=serialportlist('all');
+    catch
+        ports=seriallist; %older matlab versions
+    end
 end
 
 % set up for single or multiple ports
 if isa(ports,'string') && length(ports)>1
     nports=length(ports);
-else
+elseif ~isempty(ports)
     nports=1;
     ports=string(ports);
+else
+    nports=0;
 end
 IDstrings(1:nports)="";
 
