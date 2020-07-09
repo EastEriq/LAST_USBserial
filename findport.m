@@ -3,6 +3,6 @@ function port=findport(ID)
 % 
 % Example: findport('FTDI')
 
-[IDstrings,ports]=serialDevID(serialportlist);
+[IDstrings,ports]=serialDevID();
 
 port=ports(contains(IDstrings,ID));
