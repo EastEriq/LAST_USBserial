@@ -38,12 +38,12 @@ for i=1:nports
     % strip '/dev/'
     portID=strrep(char(ports(i)),'/dev/','');
     IDstring='';
-    if exist('/sys/bus/usb-serial/devices','file')
+%     if exist('/sys/bus/usb-serial/devices','file')
 %         [~,IDstring]=unix(['find /sys/bus/usb-serial/devices/ -type l -printf ''%l %p\n'' |grep ' ...
 %             portID '| cut -d" " -f1']);
-    % maybe better parse ['udevadm info --name' ports(i)] instead
-        [~,IDstring]=unix(['udevadm info --name ' char(ports(i)) '| grep ID_PATH=|cut -d= -f2']);
-    end
- %   IDpaths(i)=strrep(IDstring(1:end-1),'/dev/serial/by-id/','');
+%         maybe better parse ['udevadm info --name' ports(i)] instead
+%     end
+%     IDpaths(i)=strrep(IDstring(1:end-1),'/dev/serial/by-id/','');
+    [~,IDstring]=unix(['udevadm info --name ' char(ports(i)) '| grep ID_PATH=|cut -d= -f2']);
     IDpaths(i)=IDstring(1:end-1);
 end
