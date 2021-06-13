@@ -1,7 +1,7 @@
 # LAST_USBserial
 Utilities for disambiguating names of USB-serial ports
 
-**Problem:** serial adapters connected to the computer take arbitrary names (e.g. `/dev/USB0`, `/dev/USB1`, ..., `/dev/ACM0`, ...). 
+**Problem:** serial adapters connected to the computer take arbitrary names (e.g. `/dev/USB0`, `/dev/USB1`, ..., `/dev/ACM0`, ...).
 This is a hindrance when several serial devices are present, and need to be uniquely addressed.
 
 **Solution:** retrieve long identifiers of each serial adapter, including chip type and serial number. These names can help to
