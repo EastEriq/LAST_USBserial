@@ -4,4 +4,8 @@ function isPCI=isPCIusb(address)
 %  (approximate: check only that it is a string which begnis with 'pci-', 
 %  splittable by ':' and which contains 'usb' somewhere) 
          parts=split(address,':');
-         isPCI = contains(parts(1),'pci-') & any(contains(parts(2:end),'usb'));
+         if ~isempty(parts)
+             isPCI = contains(parts(1),'pci-') & any(contains(parts(2:end),'usb'));
+         else
+             isPCI=false;
+         end
